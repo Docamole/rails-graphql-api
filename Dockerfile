@@ -3,6 +3,7 @@ FROM alpine:3.7
 ENV APP_PATH /rails-graphql-api
 
 RUN apk add --update \
+    postgresql-dev \
     alpine-sdk \
     ruby-dev \
     zlib-dev \
