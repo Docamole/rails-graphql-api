@@ -1,0 +1,17 @@
+version: '3.1'
+
+services:
+  api:
+    build: .
+    depends_on:
+      - db
+    env_file:
+      - .env
+
+  db:
+    image: postgres:alpine
+    restart: always
+    ports:
+      - 5432:5432
+    env_file:
+      - .env
