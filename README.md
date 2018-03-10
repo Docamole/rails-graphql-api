@@ -1,24 +1,52 @@
-# README
+# rails-graphql-api
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+A basic, minimal, opionated project base for Rails GraphQL APIs
 
-Things you may want to cover:
+## Requirements
 
-* Ruby version
+- [Docker CE](https://www.docker.com/community-edition)
 
-* System dependencies
+## Getting Started
 
-* Configuration
+**Clone this repo, copy the environment file example, make any necessary changes**
 
-* Database creation
+```bash
+git clone https://github.com/docamole/rails-graphql-api.git example-api
+cd example-api
+cp .env.example .env
+nano .env
+```
 
-* Database initialization
+***
 
-* How to run the test suite
+**Build the docker container**
 
-* Services (job queues, cache servers, search engines, etc.)
+```bash
+docker-compose build
+```
 
-* Deployment instructions
+***
 
-* ...
+**Create the database**
+
+```bash
+docker-compose run api rake db:create db:migrate
+```
+
+***
+
+**Start the container**
+
+```bash
+docker-compose up
+```
+
+You should now have a running GraphQL endpoint at [http://localhost:3000](http://localhost:3000)
+
+***
+
+**Stopping the container**
+
+To stop the running container, press `Ctrl+C`, then type `docker-compose stop`
+
+To destroy a container, use `docker-compose down`
