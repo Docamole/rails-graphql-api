@@ -18,6 +18,8 @@ before_install:
 install: echo Using docker -- skipping local bundle
 
 before_script:
+  - docker-compose run api curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+  - docker-compose run api chmod +x ./cc-test-reporter
   - docker-compose run api ./cc-test-reporter before-build
 
 script:
