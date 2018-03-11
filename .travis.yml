@@ -25,4 +25,4 @@ script:
   - docker-compose run api bundle exec rspec spec --format documentation
 
 after_script:
-  - docker-compose run api cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
+  - docker-compose run api cc-test-reporter after-build --exit-code \$TRAVIS_TEST_RESULT
