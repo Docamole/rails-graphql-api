@@ -1,7 +1,5 @@
 sudo: required
 
-# cache: bundler
-
 services:
   - docker
 
@@ -12,6 +10,9 @@ before_install:
   - cp .env.example .env
   - docker-compose build
   - docker-compose run api bundle exec rake db:create db:migrate
+
+# Required to override default bundle install
+install: echo Using docker -- skipping local bundle
 
 script:
   - docker-compose run api bundle exec rake test
