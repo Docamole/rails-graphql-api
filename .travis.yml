@@ -1,5 +1,7 @@
 sudo: required
 
+language: generic
+
 notifications:
   - false
 
@@ -18,11 +20,11 @@ before_install:
 install: echo Using docker -- skipping local bundle
 
 before_script:
-  - docker-compose run api cc-test-reporter before-build -d
+  - docker-compose run api cc-test-reporter before-build
 
 script:
   - docker-compose run api bundle exec rake test
-  - docker-compose run api bundle exec rspec spec --format documentation
+  - docker-compose run api bundle exec rspec
 
 after_script:
-  - docker-compose run api cc-test-reporter after-build -d -t simplecov --exit-code $TRAVIS_TEST_RESULT
+  - docker-compose run api cc-test-reporter after-build -t simplecov
