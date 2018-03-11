@@ -1,6 +1,6 @@
 sudo: required
 
-cache: bundler
+# cache: bundler
 
 services:
   - docker
