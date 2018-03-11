@@ -4,8 +4,10 @@ A basic, minimal, opionated project base for Rails GraphQL APIs
 
 [![BuildStatus](https://travis-ci.org/Docamole/rails-graphql-api.svg?branch=master)](https://travis-ci.org/Docamole/rails-graphql-api)
 [![Maintainability](https://api.codeclimate.com/v1/badges/08fcb1975ad2f7871544/maintainability)](https://codeclimate.com/github/Docamole/rails-graphql-api/maintainability)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/08fcb1975ad2f7871544/test_coverage)](https://codeclimate.com/github/Docamole/rails-graphql-api/test_coverage)
+[![Inline docs](http://inch-ci.org/github/docamole/rails-graphql-api.svg?branch=master)](http://inch-ci.org/github/docamole/rails-graphql-api)
 
-## Requirements
+## Prerequisites
 
 - [Docker CE](https://www.docker.com/community-edition)
 

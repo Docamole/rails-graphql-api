@@ -1,0 +1,5 @@
+files:
+  included:
+    # - plugins/**/*.rb
+  excluded:
+    # - plugins/vendor/sparkr/sparkr.rb
