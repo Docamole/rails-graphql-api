@@ -1,3 +1,17 @@
+require 'simplecov'
+require 'simplecov-console'
+
+SimpleCov.formatter = SimpleCov::Formatter::Console
+SimpleCov.start 'rails' do
+  add_group 'Action Cable', 'app/channels'
+  add_group 'Mailers', 'app/mailers'
+  add_group 'Models', 'app/models'
+  add_group 'Controllers', 'app/controllers'
+  add_group 'Services', 'app/services'
+  add_group 'Jobs', 'app/jobs'
+  add_group 'GraphQL', 'app/graphql'
+end
+
 # This file is copied to spec/ when you run 'rails generate rspec:install'
 require 'spec_helper'
 ENV['RAILS_ENV'] ||= 'test'

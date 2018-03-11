@@ -61,9 +61,9 @@ class TokenService
     when 'none'
       jwt_decode
     when 'HS256', 'HS512256', 'HS384', 'HS512'
-      jwt_decode(@secret)
+      jwt_decode(key: @secret, encrypted: true)
     when 'RS256', 'RS384', 'RS512'
-      jwt_decode(@public_key)
+      jwt_decode(key: @public_key, encrypted: true)
     end
     self
   end

@@ -39,6 +39,7 @@ RSpec.describe TokenService, type: :service do
 
   # it 'fails with an expired token' do
   #   jwt = TokenService.new(payload: 'puppies', algorithm: 'HS384', expires: 0).encode
+  #   sleep(1)
   #   jwt = TokenService.new(token: jwt.token, algorithm: 'HS384').decode
   #   expect(jwt.payload).to eq(nil)
   # end

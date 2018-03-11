@@ -7,7 +7,12 @@ RUN apk add --update \
     alpine-sdk \
     ruby-dev \
     zlib-dev \
-    ruby
+    ruby \
+    curl
+
+# Code Climate test reporting
+RUN curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter && \
+    chmod +x ./cc-test-reporter
 
 RUN gem install bundler --no-ri --no-rdoc
 

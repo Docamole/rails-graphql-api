@@ -8,6 +8,7 @@
 /.bundle
 
 /.yardoc
+/coverage
 
 # Ignore all logfiles and tempfiles.
 /log/*

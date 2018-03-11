@@ -28,6 +28,8 @@ gem 'redcarpet', '~> 3.4'
 group :development, :test do
   # Testing
   gem 'rspec-rails', '~> 3.7', '>= 3.7.2'
+  gem 'simplecov', '~> 0.15.1'
+  gem 'simplecov-console', '~> 0.4.2'
 
   # Server
   gem 'listen', '>= 3.0.5', '< 3.2'
