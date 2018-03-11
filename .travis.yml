@@ -1,5 +1,7 @@
 sudo: required
 
+cache: bundler
+
 services:
   - docker
 
@@ -12,3 +14,4 @@ before_install:
 
 script:
   - docker-compose run api bundle exec rake test
+  - docker-compose run api bundle exec rspec spec --format documentation

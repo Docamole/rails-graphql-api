@@ -46,6 +46,8 @@ docker-compose up
 
 You should now have a running GraphQL endpoint at [http://localhost:3000](http://localhost:3000)
 
+You can view documentation at [http://localhost:8808](http://localhost:8808)
+
 ***
 
 **Stopping the container**
