@@ -1,7 +1,7 @@
 require 'simplecov'
 require 'simplecov-console'
 
-SimpleCov.formatter = SimpleCov::Formatter::Console
+# SimpleCov.formatter = SimpleCov::Formatter::Console
 SimpleCov.start 'rails' do
   add_group 'Action Cable', 'app/channels'
   add_group 'Mailers', 'app/mailers'
