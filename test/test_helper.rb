@@ -7,4 +7,7 @@ class ActiveSupport::TestCase
   fixtures :all
 
   # Add more helper methods to be used by all tests here...
+  def query(query_string)
+    RailsGraphqlApiSchema.execute("{ #{query_string} }").to_h['data']
+  end
 end

@@ -16,6 +16,9 @@ gem 'pg', '>= 0.18', '< 2.0'
 gem 'rack-cors', '~> 1.0', '>= 1.0.2'
 gem 'graphql', '~> 1.7', '>= 1.7.13'
 
+# Auth
+gem 'jwt', '~> 2.1'
+
 # Required when using alpine ruby
 gem 'json', '~> 2.1'
 gem 'bigdecimal', '~> 1.3', '>= 1.3.4'
