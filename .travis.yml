@@ -10,8 +10,9 @@ before_install:
   # Wait for postgresql to shutdown
   - while sudo lsof -Pi :5432 -sTCP:LISTEN -t; do sleep 1; done
   - cp .env.example .env
-  - gem install io-console
   - docker-compose build
+  - docker-compose run api gem install io-console
+  - docker-compose run api bundle
   - docker-compose run api bundle exec rake db:create db:migrate
 
 script:
