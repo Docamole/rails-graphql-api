@@ -10,7 +10,7 @@ before_install:
   # Wait for postgresql to shutdown
   - while sudo lsof -Pi :5432 -sTCP:LISTEN -t; do sleep 1; done
   - cp .env.example .env
-  - docker-compose build
+  - docker-compose run api bundle install
   - docker-compose run api bundle exec rake db:create db:migrate
 
 script:
