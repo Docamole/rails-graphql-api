@@ -19,4 +19,4 @@ RUN bundle
 
 ADD . .
 
-RUN chmod +777 bin/cc-test-reporter
+RUN chmod 777 bin/cc-test-reporter
