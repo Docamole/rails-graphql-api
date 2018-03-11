@@ -18,3 +18,5 @@ COPY Gemfile Gemfile.lock ./
 RUN bundle
 
 ADD . .
+
+RUN chmod +777 bin/cc-test-reporter
