@@ -20,10 +20,10 @@ gem 'graphql', '~> 1.7', '>= 1.7.13'
 gem 'jwt', '~> 2.1'
 
 # Required when using alpine ruby
-gem 'json', '~> 2.1'
-gem 'bigdecimal', '~> 1.3', '>= 1.3.4'
-gem 'io-console', '~> 0.4.6'
-gem 'redcarpet', '~> 3.4'
+# gem 'json', '~> 2.1'
+# gem 'bigdecimal', '~> 1.3', '>= 1.3.4'
+# gem 'io-console', '~> 0.4.6'
+# gem 'redcarpet', '~> 3.4'
 
 group :development, :test do
   # Testing
