@@ -16,14 +16,24 @@ class TokenService
   attr_accessor :public_key
 
   # @param payload [String] Payload to encode
+  # @param token [String] Token to decode
   # @param algorithm [String] Encryption algorithm to use
   # @param public_key [String] RSA Public Key for decoding
-  def initialize(payload: nil, algorithm: 'none', public_key: nil)
+  # @param expires [Time] Time from now to expire token (Default: 24.hours)
+  def initialize(payload: nil, token: nil, algorithm: 'none', public_key: nil, expires: 24.hours)
     @algorithm = algorithm
+    @expires = Time.now.to_i + expires.to_i
     @payload = payload
+    @token = token
     @secret = Rails.application.secrets.secret_key_base
   end
 
+  # Sets {#token} and {#public_key}(RSA) to encoded {#payload} using specified {#algorithm}
+  # @example Encode a hash using RSA Encryption
+  #   jwt   = TokenService.new(payload: { data: 'puppies' }, algorithm: 'RS512').encode
+  #   token = jwt.token
+  #   key   = jwt.public_key
+  # @return [self]
   def encode
     @token = nil
     @public_key = nil
@@ -40,6 +50,11 @@ class TokenService
     self
   end
 
+  # Sets {#payload} to decoded {#token} using specified {#algorithm} and {#public_key}(RSA)
+  # @example Decode an encrypted token using RSA
+  #   jwt     = TokenService.new(token: 'your.jwt.token', algorithm: 'RS512', public_key: 'your-key').decode
+  #   my_data = jwt.payload
+  # @return [self]
   def decode
     @payload = nil
     case @algorithm
@@ -56,14 +71,22 @@ class TokenService
   private
 
   def jwt_encode(key = nil)
-    @token = JWT.encode(@payload, key, @algorithm)
+    payload = {
+      data: @payload,
+      exp:  @expires
+    }
+    @token = JWT.encode(payload, key, @algorithm)
   end
 
   def jwt_decode(key = nil, encrypted = false)
-    if encrypted
-      @payload = JWT.decode(@token, @key, true, { algorithm: @algorithm })[0]
-    else
-      @payload = JWT.decode(@token, nil, false)[0]
+    begin
+      if encrypted
+        @payload = JWT.decode(@token, @key, true, { algorithm: @algorithm, exp_leeway: 0 })[0]['data']
+      else
+        @payload = JWT.decode(@token, nil, false, { exp_leeway: 0 })[0]['data']
+      end
+    rescue JWT::ExpiredSignature
+      # Handle expired token
     end
   end
 end
