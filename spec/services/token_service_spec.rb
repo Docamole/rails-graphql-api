@@ -31,12 +31,6 @@ RSpec.describe TokenService, type: :service do
     expect(payload).to eq('puppies')
   end
 
-  it 'encodes and decodes a hash' do
-    jwt = TokenService.new(payload: { data: 'puppies' }, algorithm: 'RS512').encode
-    jwt = TokenService.new(token: jwt.token, algorithm: 'RS512', public_key: jwt.public_key).decode
-    expect(jwt.payload['data']).to eq('puppies')
-  end
-
   # it 'fails with an expired token' do
   #   jwt = TokenService.new(payload: 'puppies', algorithm: 'HS384', expires: 0).encode
   #   sleep(1)

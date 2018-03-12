@@ -23,7 +23,7 @@ before_script:
   - docker-compose run api cc-test-reporter before-build
 
 script:
-  - docker-compose run api bundle exec rspec
+  - docker-compose run api bundle exec rspec spec --format documentation
 
 after_script:
   - docker-compose run api cc-test-reporter after-build -t simplecov
