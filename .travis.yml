@@ -23,7 +23,6 @@ before_script:
   - docker-compose run api cc-test-reporter before-build
 
 script:
-  - docker-compose run api bundle exec rake test
   - docker-compose run api bundle exec rspec
 
 after_script:
