@@ -8,6 +8,7 @@ end
 # Server
 gem 'rails', '~> 5.1.5'
 gem 'puma', '~> 3.7'
+gem 'anycable-rails', '~> 0.5.3'
 
 # Database
 gem 'pg', '>= 0.18', '< 2.0'

@@ -7,11 +7,20 @@ services:
     volumes:
       - .:/rails-graphql-api
     ports:
+      - 50051:50051
       - 3000:3000
       - 8808:8808
     depends_on:
-      - redis
       - db
+      - redis
+      - websocket
+    env_file:
+      - .env
+
+  websocket:
+    image: anycable/anycable-go:0.5.4
+    ports:
+      - 8080:8080
     env_file:
       - .env
 
