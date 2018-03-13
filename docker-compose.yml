@@ -10,6 +10,7 @@ services:
       - 3000:3000
       - 8808:8808
     depends_on:
+      - redis
       - db
     env_file:
       - .env
@@ -21,3 +22,9 @@ services:
       - 5432:5432
     env_file:
       - .env
+
+  redis:
+    image: redis:4.0-alpine
+    command: redis-server
+    ports:
+      - 6379:6379
