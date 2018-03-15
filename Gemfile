@@ -8,6 +8,7 @@ end
 # Server
 gem 'rails', '~> 5.1.5'
 gem 'puma', '~> 3.7'
+gem 'redis', '~> 4.0', '>= 4.0.1'
 gem 'anycable-rails', '~> 0.5.3'
 
 # Database
@@ -30,6 +31,7 @@ group :development, :test do
   # Testing
   gem 'rspec-graphql_matchers', '~> 0.7.1'
   gem 'rspec-rails', '~> 3.7', '>= 3.7.2'
+  gem 'action-cable-testing', '~> 0.3.0'
   gem 'simplecov', '~> 0.15.1'
   gem 'simplecov-console', '~> 0.4.2'
 

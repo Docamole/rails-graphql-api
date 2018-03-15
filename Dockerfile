@@ -6,9 +6,10 @@ RUN apk add --update \
     postgresql-dev \
     alpine-sdk \
     ruby-dev \
+    ruby-irb \
     zlib-dev \
-    ruby \
-    curl
+    curl \
+    ruby
 
 RUN curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > /usr/bin/cc-test-reporter && \
     chmod 777 /usr/bin/cc-test-reporter

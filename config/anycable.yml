@@ -23,19 +23,20 @@
 # Ex: rpc_host is overridden by ANYCABLE_RPC_HOST, redis_url by ANYCABLE_REDIS_URL e.t.c Look in anyway_config for more details
 
 default: &default
-  rpc_host: "api:50051"
+  rpc_host: "localhost:50051"
   log_grpc: false
   log_file: nil
   debug: false # Shortcut to enable GRPC logging and debug level
   log_level: info
   redis_channel: "__anycable__"
+  redis_url: "redis://redis:6379/0"
   redis_sentinels: []
-
-
-production:
-  <<: *default
-  redis_url: "redis://localhost:6379/1"
 
 development:
   <<: *default
-  redis_url: "redis://redis:6379/0"
+
+test:
+  <<: *default
+
+production:
+  <<: *default
