@@ -24,10 +24,11 @@ nano .env
 
 ***
 
-**Build the docker container**
+**Build the docker container, then install the node packages**
 
 ```bash
 docker-compose build
+docker-compose run api yarn
 ```
 
 ***

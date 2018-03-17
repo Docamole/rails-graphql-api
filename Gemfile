@@ -25,6 +25,12 @@ gem 'bigdecimal', '~> 1.3', '>= 1.3.4'
 gem 'io-console', '~> 0.4.6'
 gem 'redcarpet', '~> 3.4'
 
+# JS
+gem 'webpacker', '~> 3.3', '>= 3.3.1'
+
+# UI
+gem 'haml', '~> 5.0', '>= 5.0.4'
+
 group :development, :test do
   # Testing
   gem 'rspec-graphql_matchers', '~> 0.7.1'
