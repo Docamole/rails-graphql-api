@@ -1,3 +1,5 @@
+# JWT Token Service
+# Handles encoding & decoding payloads using HMAC or RSA
 class TokenService
   # Supported: HS256, HS512256, HS384, HS512, RS256, RS384, RS512
   # @return [String] The current encryption algorithm
@@ -39,7 +41,7 @@ class TokenService
     @public_key = nil
     case @algorithm
     when 'none'
-      jwt_encode
+      jwt_encode(nil)
     when 'HS256', 'HS512256', 'HS384', 'HS512'
       jwt_encode(@secret)
     when 'RS256', 'RS384', 'RS512'
@@ -59,29 +61,29 @@ class TokenService
     @payload = nil
     case @algorithm
     when 'none'
-      jwt_decode
+      jwt_decode(nil)
     when 'HS256', 'HS512256', 'HS384', 'HS512'
-      jwt_decode(@secret)
+      jwt_decode(@secret, true)
     when 'RS256', 'RS384', 'RS512'
-      jwt_decode(@public_key)
+      jwt_decode(@public_key, true)
     end
     self
   end
 
   private
 
-  def jwt_encode(key = nil)
+  def jwt_encode(secret)
     payload = {
       data: @payload,
       exp:  @expires
     }
-    @token = JWT.encode(payload, key, @algorithm)
+    @token = JWT.encode(payload, secret, @algorithm)
   end
 
-  def jwt_decode(key = nil, encrypted = false)
+  def jwt_decode(public_key, encrypted=false)
     begin
       if encrypted
-        @payload = JWT.decode(@token, @key, true, { algorithm: @algorithm, exp_leeway: 0 })[0]['data']
+        @payload = JWT.decode(@token, public_key, true, { algorithm: @algorithm, exp_leeway: 0 })[0]['data']
       else
         @payload = JWT.decode(@token, nil, false, { exp_leeway: 0 })[0]['data']
       end

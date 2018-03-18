@@ -2,4 +2,10 @@ files:
   included:
     # - plugins/**/*.rb
   excluded:
-    # - plugins/vendor/sparkr/sparkr.rb
+    - app/channels/application_cable/connection.rb
+    - app/channels/application_cable/channel.rb
+    - app/controllers/application_controller.rb
+    - app/controllers/graphql_controller.rb
+    - app/mailers/application_mailer.rb
+    - app/models/application_record.rb
+    - app/jobs/application_job.rb

@@ -1,11 +1,17 @@
 sudo: required
 
+language: generic
+
+notifications:
+  - false
+
 services:
   - docker
 
 before_install:
+  # Shutdown postgres since we need the port for our own postgres container
   - sudo service postgresql stop
-  # Wait for postgresql to shutdown
+  # Wait for postgres to shutdown
   - while sudo lsof -Pi :5432 -sTCP:LISTEN -t; do sleep 1; done
   - cp .env.example .env
   - docker-compose build
@@ -14,6 +20,11 @@ before_install:
 # Required to override default bundle install
 install: echo Using docker -- skipping local bundle
 
+before_script:
+  - docker-compose run api cc-test-reporter before-build
+
 script:
-  - docker-compose run api bundle exec rake test
-  - docker-compose run api bundle exec rspec spec --format documentation
+  - docker-compose run api rspec spec --format documentation
+
+after_script:
+  - docker-compose run api cc-test-reporter after-build -t simplecov
