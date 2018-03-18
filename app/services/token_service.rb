@@ -70,6 +70,12 @@ class TokenService
     self
   end
 
+  # Expiration time of token
+  # @return [Time] Token Expiration
+  def expiration
+    Time.at(@expires)
+  end
+
   private
 
   def jwt_encode(secret)
