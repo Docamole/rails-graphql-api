@@ -10,10 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180310062325) do
+ActiveRecord::Schema.define(version: 20180318015554) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
   enable_extension "uuid-ossp"
+  enable_extension "pgcrypto"
+
+  create_table "jwt_tokens", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.string "token"
+    t.datetime "expiration"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
 end
