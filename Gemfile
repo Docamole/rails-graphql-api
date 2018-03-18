@@ -31,7 +31,6 @@ group :development, :test do
   # Testing
   gem 'rspec-graphql_matchers', '~> 0.7.1'
   gem 'rspec-rails', '~> 3.7', '>= 3.7.2'
-  # This gem might be causing issues with testing (since we're using anycable)
   # gem 'action-cable-testing', '~> 0.3.0'
   gem 'simplecov', '~> 0.15.1'
   gem 'simplecov-console', '~> 0.4.2'

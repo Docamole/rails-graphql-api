@@ -1,17 +1,26 @@
 require 'rails_helper'
+require_relative 'stubs/test_connection'
 
 RSpec.describe GraphqlChannel, type: :channel do
-  # before do
-  #   stub_connection
-  # end
-
-  it 'broadcasts' do
-    expect(GraphqlChannel.broadcast_to('__anycable__', query: '{ testField }')).to eq(1)
+  subject(:channel) { described_class.new(connection, {}) }
+  # let(:connection) { TestConnection.new('test') }
+  let(:connection) { ApplicationCable::Connection.new(current_user: 'test', env: 'test') }
+  let(:server) { connection.server }
+  let(:data) do
+    {
+      action: 'execute',
+      query: '{ testField }'
+    }
   end
 
-  # it 'subscribes to a stream' do
-  #   subscribe
-  #   pending('working on channels/subscriptions (might be testing suite too?)')
-  #   expect(subscription).to be_confirmed
-  # end
+  it 'does something' do
+    expect(server).to receive(:broadcast)
+    # channel.perform_action(data)
+    p connection.subscriptions
+    server.broadcast '__anycable__', 'puppies!'
+  end
+
+  it 'subscribes'
+  it 'responds to a query'
+  it 'responds to a mutation'
 end
