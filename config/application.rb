@@ -34,6 +34,8 @@ module RailsGraphqlApi
       g.orm :active_record, primary_key_type: :uuid
     end
 
+    config.active_job.queue_adapter = :resque
+
     config.middleware.insert_before 0, Rack::Cors do
       allow do
         origins '*'

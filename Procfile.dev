@@ -1,2 +1,6 @@
+rpc: ./bin/anycable
 api: bundle exec rails s -p 3000 -b 0.0.0.0 -e development
-yard: bundle exec yard server -r
+#jobs: RAILS_ENV=development resque-web ./config/initializers/resque.rb
+#jobs: QUEUE=* bundle exec rake resque:work
+#job: bundle exec resque-web
+#yard: bundle exec yard server -r
