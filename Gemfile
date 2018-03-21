@@ -33,7 +33,7 @@ group :development, :test do
   gem 'rspec-graphql_matchers', '~> 0.7.1'
   gem 'rspec-rails', '~> 3.7', '>= 3.7.2'
   # gem 'action-cable-testing', '~> 0.3.0'
-  gem 'simplecov', '~> 0.15.1'
+  gem 'simplecov', '~> 0.16.1'
   gem 'simplecov-console', '~> 0.4.2'
 
   # Server
